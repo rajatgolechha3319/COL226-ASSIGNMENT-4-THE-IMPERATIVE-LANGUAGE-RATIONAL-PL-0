@@ -1,0 +1,2509 @@
+3 reduce/reduce conflicts
+39 shift/reduce conflicts
+
+error:  state 0: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 0: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+error:  state 5: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 5: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+error:  state 12: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 12: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+error:  state 13: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 52: shift/reduce conflict (shift NEQ, reduce by rule 26)
+error:  state 52: shift/reduce conflict (shift EQ, reduce by rule 26)
+error:  state 57: shift/reduce conflict (shift NEQ, reduce by rule 25)
+error:  state 57: shift/reduce conflict (shift EQ, reduce by rule 25)
+error:  state 61: shift/reduce conflict (shift NEQ, reduce by rule 24)
+error:  state 61: shift/reduce conflict (shift EQ, reduce by rule 24)
+error:  state 109: shift/reduce conflict (shift GTE, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift GT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift LTE, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift LT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift NEQ, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift EQ, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift DIVRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift MULRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift SUBRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift ADDRAT, reduce by rule 38)
+error:  state 112: shift/reduce conflict (shift GTE, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift GT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift LTE, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift LT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift NEQ, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift EQ, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift DIVRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift MULRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift SUBRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift ADDRAT, reduce by rule 31)
+error:  state 0: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 0: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 0: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+
+state 0:
+
+	start : . blk 
+
+	RATIONAL	shift 11
+	INTEGER	shift 10
+	BOOLEAN	shift 9
+	PROCEDURE	shift 8
+	LBRACE	reduce by rule 2
+
+	start	goto 156
+	blk	goto 7
+	decseq	goto 6
+	dec	goto 5
+	typedec	goto 4
+	pdeflist	goto 3
+	procdef	goto 2
+	typedec2	goto 1
+
+	.	error
+
+
+state 1:
+
+	procdef : typedec2 . IDENTIFIER blk 
+
+	IDENTIFIER	shift 12
+
+
+	.	error
+
+
+state 2:
+
+	pdeflist : procdef . SEMICOLON pdeflist 
+
+	SEMICOLON	shift 13
+
+
+	.	error
+
+
+state 3:
+
+	dec : pdeflist .  (reduce by rule 5)
+
+
+
+	.	reduce by rule 5
+
+
+state 4:
+
+	dec : typedec . varlist SEMICOLON 
+
+	IDENTIFIER	shift 15
+
+	varlist	goto 14
+
+	.	error
+
+error:  state 5: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 5: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 5: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+
+state 5:
+
+	decseq : dec . decseq 
+
+	RATIONAL	shift 11
+	INTEGER	shift 10
+	BOOLEAN	shift 9
+	PROCEDURE	shift 8
+	LBRACE	reduce by rule 2
+
+	decseq	goto 16
+	dec	goto 5
+	typedec	goto 4
+	pdeflist	goto 3
+	procdef	goto 2
+	typedec2	goto 1
+
+	.	error
+
+
+state 6:
+
+	blk : decseq . comseq 
+
+	LBRACE	shift 18
+
+	comseq	goto 17
+
+	.	error
+
+
+state 7:
+
+	start : blk .  (reduce by rule 0)
+
+
+
+	.	reduce by rule 0
+
+
+state 8:
+
+	typedec2 : PROCEDURE .  (reduce by rule 9)
+
+
+
+	.	reduce by rule 9
+
+
+state 9:
+
+	typedec : BOOLEAN .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 10:
+
+	typedec : INTEGER .  (reduce by rule 6)
+
+
+
+	.	reduce by rule 6
+
+
+state 11:
+
+	typedec : RATIONAL .  (reduce by rule 8)
+
+
+
+	.	reduce by rule 8
+
+error:  state 12: reduce/reduce conflict between rule 12 and rule 2 on LBRACE
+error:  state 12: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift BOOLEAN, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift INTEGER, reduce by rule 12)
+error:  state 12: shift/reduce conflict (shift RATIONAL, reduce by rule 12)
+
+state 12:
+
+	procdef : typedec2 IDENTIFIER . blk 
+
+	RATIONAL	shift 11
+	INTEGER	shift 10
+	BOOLEAN	shift 9
+	PROCEDURE	shift 8
+	LBRACE	reduce by rule 2
+
+	blk	goto 19
+	decseq	goto 6
+	dec	goto 5
+	typedec	goto 4
+	pdeflist	goto 3
+	procdef	goto 2
+	typedec2	goto 1
+
+	.	error
+
+error:  state 13: shift/reduce conflict (shift PROCEDURE, reduce by rule 12)
+
+state 13:
+
+	pdeflist : procdef SEMICOLON . pdeflist 
+
+	PROCEDURE	shift 8
+
+	pdeflist	goto 20
+	procdef	goto 2
+	typedec2	goto 1
+
+	.	reduce by rule 12
+
+
+state 14:
+
+	dec : typedec varlist . SEMICOLON 
+
+	SEMICOLON	shift 21
+
+
+	.	error
+
+
+state 15:
+
+	varlist : IDENTIFIER .  (reduce by rule 10)
+	varlist : IDENTIFIER . COMMA varlist 
+
+	COMMA	shift 22
+
+
+	.	reduce by rule 10
+
+
+state 16:
+
+	decseq : dec decseq .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 17:
+
+	blk : decseq comseq .  (reduce by rule 1)
+
+
+
+	.	reduce by rule 1
+
+
+state 18:
+
+	comseq : LBRACE . commands RBRACE 
+
+	IF	shift 30
+	WHILE	shift 29
+	PRINT	shift 28
+	CALL	shift 27
+	READ	shift 26
+	IDENTIFIER	shift 25
+
+	commands	goto 24
+	command	goto 23
+
+	.	reduce by rule 16
+
+
+state 19:
+
+	procdef : typedec2 IDENTIFIER blk .  (reduce by rule 14)
+
+
+
+	.	reduce by rule 14
+
+
+state 20:
+
+	pdeflist : procdef SEMICOLON pdeflist .  (reduce by rule 13)
+
+
+
+	.	reduce by rule 13
+
+
+state 21:
+
+	dec : typedec varlist SEMICOLON .  (reduce by rule 4)
+
+
+
+	.	reduce by rule 4
+
+
+state 22:
+
+	varlist : IDENTIFIER COMMA . varlist 
+
+	IDENTIFIER	shift 15
+
+	varlist	goto 31
+
+	.	error
+
+
+state 23:
+
+	commands : command . SEMICOLON commands 
+
+	SEMICOLON	shift 32
+
+
+	.	error
+
+
+state 24:
+
+	comseq : LBRACE commands . RBRACE 
+
+	RBRACE	shift 33
+
+
+	.	error
+
+
+state 25:
+
+	command : IDENTIFIER . ASSIGN expression 
+
+	ASSIGN	shift 34
+
+
+	.	error
+
+
+state 26:
+
+	command : READ . LPAREN IDENTIFIER RPAREN 
+
+	LPAREN	shift 35
+
+
+	.	error
+
+
+state 27:
+
+	command : CALL . IDENTIFIER 
+
+	IDENTIFIER	shift 36
+
+
+	.	error
+
+
+state 28:
+
+	command : PRINT . LPAREN expression RPAREN 
+
+	LPAREN	shift 37
+
+
+	.	error
+
+
+state 29:
+
+	command : WHILE . expression DO comseq OD 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 38
+
+	.	error
+
+
+state 30:
+
+	command : IF . expression THEN comseq ELSE comseq FI 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 43
+
+	.	error
+
+
+state 31:
+
+	varlist : IDENTIFIER COMMA varlist .  (reduce by rule 11)
+
+
+
+	.	reduce by rule 11
+
+
+state 32:
+
+	commands : command SEMICOLON . commands 
+
+	IF	shift 30
+	WHILE	shift 29
+	PRINT	shift 28
+	CALL	shift 27
+	READ	shift 26
+	IDENTIFIER	shift 25
+
+	commands	goto 44
+	command	goto 23
+
+	.	reduce by rule 16
+
+
+state 33:
+
+	comseq : LBRACE commands RBRACE .  (reduce by rule 15)
+
+
+
+	.	reduce by rule 15
+
+
+state 34:
+
+	command : IDENTIFIER ASSIGN . expression 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 45
+
+	.	error
+
+
+state 35:
+
+	command : READ LPAREN . IDENTIFIER RPAREN 
+
+	IDENTIFIER	shift 46
+
+
+	.	error
+
+
+state 36:
+
+	command : CALL IDENTIFIER .  (reduce by rule 19)
+
+
+
+	.	reduce by rule 19
+
+
+state 37:
+
+	command : PRINT LPAREN . expression RPAREN 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 47
+
+	.	error
+
+
+state 38:
+
+	command : WHILE expression . DO comseq OD 
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+
+	DO	shift 50
+	EQ	shift 49
+	NEQ	shift 48
+
+
+	.	error
+
+
+state 39:
+
+	expression : LPAREN . expression RPAREN 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 51
+
+	.	error
+
+
+state 40:
+
+	expression : BOOLEAN . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 52
+
+	.	error
+
+
+state 41:
+
+	expression : INTEGER . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 57
+
+	.	error
+
+
+state 42:
+
+	expression : RATIONAL . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 61
+
+	.	error
+
+
+state 43:
+
+	command : IF expression . THEN comseq ELSE comseq FI 
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+
+	THEN	shift 72
+	EQ	shift 49
+	NEQ	shift 48
+
+
+	.	error
+
+
+state 44:
+
+	commands : command SEMICOLON commands .  (reduce by rule 17)
+
+
+
+	.	reduce by rule 17
+
+
+state 45:
+
+	command : IDENTIFIER ASSIGN expression .  (reduce by rule 18)
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+
+	EQ	shift 49
+	NEQ	shift 48
+
+
+	.	reduce by rule 18
+
+
+state 46:
+
+	command : READ LPAREN IDENTIFIER . RPAREN 
+
+	RPAREN	shift 73
+
+
+	.	error
+
+
+state 47:
+
+	command : PRINT LPAREN expression . RPAREN 
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+
+	EQ	shift 49
+	NEQ	shift 48
+	RPAREN	shift 74
+
+
+	.	error
+
+
+state 48:
+
+	expression : expression NEQ . expression 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 75
+
+	.	error
+
+
+state 49:
+
+	expression : expression EQ . expression 
+
+	RATIONAL	shift 42
+	INTEGER	shift 41
+	BOOLEAN	shift 40
+	LPAREN	shift 39
+
+	expression	goto 76
+
+	.	error
+
+
+state 50:
+
+	command : WHILE expression DO . comseq OD 
+
+	LBRACE	shift 18
+
+	comseq	goto 77
+
+	.	error
+
+
+state 51:
+
+	expression : LPAREN expression . RPAREN 
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+
+	EQ	shift 49
+	NEQ	shift 48
+	RPAREN	shift 78
+
+
+	.	error
+
+error:  state 52: shift/reduce conflict (shift NEQ, reduce by rule 26)
+error:  state 52: shift/reduce conflict (shift EQ, reduce by rule 26)
+
+state 52:
+
+	expression : BOOLEAN boolex .  (reduce by rule 26)
+	boolex : boolex . AND boolex 
+	boolex : boolex . EQ boolex 
+	boolex : boolex . NEQ boolex 
+	boolex : boolex . OR boolex 
+
+	AND	shift 82
+	OR	shift 81
+	EQ	shift 80
+	NEQ	shift 79
+
+
+	.	reduce by rule 26
+
+
+state 53:
+
+	boolex : IDENTIFIER .  (reduce by rule 71)
+
+
+
+	.	reduce by rule 71
+
+
+state 54:
+
+	boolex : NOT . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 83
+
+	.	error
+
+
+state 55:
+
+	boolex : FALSE .  (reduce by rule 70)
+
+
+
+	.	reduce by rule 70
+
+
+state 56:
+
+	boolex : TRUE .  (reduce by rule 69)
+
+
+
+	.	reduce by rule 69
+
+error:  state 57: shift/reduce conflict (shift NEQ, reduce by rule 25)
+error:  state 57: shift/reduce conflict (shift EQ, reduce by rule 25)
+
+state 57:
+
+	expression : INTEGER integerex .  (reduce by rule 25)
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+	LT	shift 87
+	LTE	shift 86
+	GT	shift 85
+	GTE	shift 84
+
+
+	.	reduce by rule 25
+
+
+state 58:
+
+	integerex : POSNUMERAL .  (reduce by rule 63)
+
+
+
+	.	reduce by rule 63
+
+
+state 59:
+
+	integerex : IDENTIFIER .  (reduce by rule 62)
+
+
+
+	.	reduce by rule 62
+
+
+state 60:
+
+	integerex : NEG . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 95
+
+	.	error
+
+error:  state 61: shift/reduce conflict (shift NEQ, reduce by rule 24)
+error:  state 61: shift/reduce conflict (shift EQ, reduce by rule 24)
+
+state 61:
+
+	expression : RATIONAL rationalex .  (reduce by rule 24)
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+
+
+	.	reduce by rule 24
+
+
+state 62:
+
+	rationalex : RATIONALNUM .  (reduce by rule 42)
+
+
+
+	.	reduce by rule 42
+
+
+state 63:
+
+	rationalex : IDENTIFIER .  (reduce by rule 43)
+
+
+
+	.	reduce by rule 43
+
+
+state 64:
+
+	rationalex : TODECIMAL . LPAREN rationalex RPAREN 
+
+	LPAREN	shift 106
+
+
+	.	error
+
+
+state 65:
+
+	rationalex : FROMDECIMAL . LPAREN rationalex RPAREN 
+
+	LPAREN	shift 107
+
+
+	.	error
+
+
+state 66:
+
+	rationalex : SHOWDECIMAL . LPAREN rationalex RPAREN 
+
+	LPAREN	shift 108
+
+
+	.	error
+
+
+state 67:
+
+	rationalex : SHOWRAT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 109
+
+	.	error
+
+
+state 68:
+
+	rationalex : RAT . LPAREN integerex RPAREN 
+
+	LPAREN	shift 110
+
+
+	.	error
+
+
+state 69:
+
+	rationalex : MAKERAT . LPAREN integerex COMMA integerex RPAREN 
+
+	LPAREN	shift 111
+
+
+	.	error
+
+
+state 70:
+
+	rationalex : INVERSE . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 112
+
+	.	error
+
+
+state 71:
+
+	rationalex : NEG . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 113
+
+	.	error
+
+
+state 72:
+
+	command : IF expression THEN . comseq ELSE comseq FI 
+
+	LBRACE	shift 18
+
+	comseq	goto 114
+
+	.	error
+
+
+state 73:
+
+	command : READ LPAREN IDENTIFIER RPAREN .  (reduce by rule 20)
+
+
+
+	.	reduce by rule 20
+
+
+state 74:
+
+	command : PRINT LPAREN expression RPAREN .  (reduce by rule 21)
+
+
+
+	.	reduce by rule 21
+
+
+state 75:
+
+	expression : expression . EQ expression 
+	expression : expression . NEQ expression 
+	expression : expression NEQ expression .  (reduce by rule 29)
+
+
+
+	.	reduce by rule 29
+
+
+state 76:
+
+	expression : expression . EQ expression 
+	expression : expression EQ expression .  (reduce by rule 28)
+	expression : expression . NEQ expression 
+
+
+
+	.	reduce by rule 28
+
+
+state 77:
+
+	command : WHILE expression DO comseq . OD 
+
+	OD	shift 115
+
+
+	.	error
+
+
+state 78:
+
+	expression : LPAREN expression RPAREN .  (reduce by rule 27)
+
+
+
+	.	reduce by rule 27
+
+
+state 79:
+
+	boolex : boolex NEQ . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 116
+
+	.	error
+
+
+state 80:
+
+	boolex : boolex EQ . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 117
+
+	.	error
+
+
+state 81:
+
+	boolex : boolex OR . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 118
+
+	.	error
+
+
+state 82:
+
+	boolex : boolex AND . boolex 
+
+	TRUE	shift 56
+	FALSE	shift 55
+	NOT	shift 54
+	IDENTIFIER	shift 53
+
+	boolex	goto 119
+
+	.	error
+
+
+state 83:
+
+	boolex : NOT boolex .  (reduce by rule 64)
+	boolex : boolex . AND boolex 
+	boolex : boolex . EQ boolex 
+	boolex : boolex . NEQ boolex 
+	boolex : boolex . OR boolex 
+
+	EQ	shift 80
+	NEQ	shift 79
+
+
+	.	reduce by rule 64
+
+
+state 84:
+
+	integerex : integerex GTE . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 120
+
+	.	error
+
+
+state 85:
+
+	integerex : integerex GT . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 121
+
+	.	error
+
+
+state 86:
+
+	integerex : integerex LTE . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 122
+
+	.	error
+
+
+state 87:
+
+	integerex : integerex LT . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 123
+
+	.	error
+
+
+state 88:
+
+	integerex : integerex NEQ . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 124
+
+	.	error
+
+
+state 89:
+
+	integerex : integerex EQ . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 125
+
+	.	error
+
+
+state 90:
+
+	integerex : integerex MOD . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 126
+
+	.	error
+
+
+state 91:
+
+	integerex : integerex DIV . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 127
+
+	.	error
+
+
+state 92:
+
+	integerex : integerex MUL . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 128
+
+	.	error
+
+
+state 93:
+
+	integerex : integerex SUB . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 129
+
+	.	error
+
+
+state 94:
+
+	integerex : integerex ADD . integerex 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 130
+
+	.	error
+
+
+state 95:
+
+	integerex : NEG integerex .  (reduce by rule 50)
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 50
+
+
+state 96:
+
+	rationalex : rationalex GTE . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 131
+
+	.	error
+
+
+state 97:
+
+	rationalex : rationalex GT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 132
+
+	.	error
+
+
+state 98:
+
+	rationalex : rationalex LTE . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 133
+
+	.	error
+
+
+state 99:
+
+	rationalex : rationalex LT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 134
+
+	.	error
+
+
+state 100:
+
+	rationalex : rationalex NEQ . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 135
+
+	.	error
+
+
+state 101:
+
+	rationalex : rationalex EQ . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 136
+
+	.	error
+
+
+state 102:
+
+	rationalex : rationalex DIVRAT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 137
+
+	.	error
+
+
+state 103:
+
+	rationalex : rationalex MULRAT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 138
+
+	.	error
+
+
+state 104:
+
+	rationalex : rationalex SUBRAT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 139
+
+	.	error
+
+
+state 105:
+
+	rationalex : rationalex ADDRAT . rationalex 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 140
+
+	.	error
+
+
+state 106:
+
+	rationalex : TODECIMAL LPAREN . rationalex RPAREN 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 141
+
+	.	error
+
+
+state 107:
+
+	rationalex : FROMDECIMAL LPAREN . rationalex RPAREN 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 142
+
+	.	error
+
+
+state 108:
+
+	rationalex : SHOWDECIMAL LPAREN . rationalex RPAREN 
+
+	NEG	shift 71
+	INVERSE	shift 70
+	MAKERAT	shift 69
+	RAT	shift 68
+	SHOWRAT	shift 67
+	SHOWDECIMAL	shift 66
+	FROMDECIMAL	shift 65
+	TODECIMAL	shift 64
+	IDENTIFIER	shift 63
+	RATIONALNUM	shift 62
+
+	rationalex	goto 143
+
+	.	error
+
+error:  state 109: shift/reduce conflict (shift GTE, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift GT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift LTE, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift LT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift NEQ, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift EQ, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift DIVRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift MULRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift SUBRAT, reduce by rule 38)
+error:  state 109: shift/reduce conflict (shift ADDRAT, reduce by rule 38)
+
+state 109:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : SHOWRAT rationalex .  (reduce by rule 38)
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+
+
+	.	reduce by rule 38
+
+
+state 110:
+
+	rationalex : RAT LPAREN . integerex RPAREN 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 144
+
+	.	error
+
+
+state 111:
+
+	rationalex : MAKERAT LPAREN . integerex COMMA integerex RPAREN 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 145
+
+	.	error
+
+error:  state 112: shift/reduce conflict (shift GTE, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift GT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift LTE, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift LT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift NEQ, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift EQ, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift DIVRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift MULRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift SUBRAT, reduce by rule 31)
+error:  state 112: shift/reduce conflict (shift ADDRAT, reduce by rule 31)
+
+state 112:
+
+	rationalex : INVERSE rationalex .  (reduce by rule 31)
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+
+
+	.	reduce by rule 31
+
+
+state 113:
+
+	rationalex : NEG rationalex .  (reduce by rule 30)
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 30
+
+
+state 114:
+
+	command : IF expression THEN comseq . ELSE comseq FI 
+
+	ELSE	shift 146
+
+
+	.	error
+
+
+state 115:
+
+	command : WHILE expression DO comseq OD .  (reduce by rule 23)
+
+
+
+	.	reduce by rule 23
+
+
+state 116:
+
+	boolex : boolex . AND boolex 
+	boolex : boolex . EQ boolex 
+	boolex : boolex . NEQ boolex 
+	boolex : boolex NEQ boolex .  (reduce by rule 67)
+	boolex : boolex . OR boolex 
+
+
+
+	.	reduce by rule 67
+
+
+state 117:
+
+	boolex : boolex . AND boolex 
+	boolex : boolex . EQ boolex 
+	boolex : boolex EQ boolex .  (reduce by rule 66)
+	boolex : boolex . NEQ boolex 
+	boolex : boolex . OR boolex 
+
+
+
+	.	reduce by rule 66
+
+
+state 118:
+
+	boolex : boolex . AND boolex 
+	boolex : boolex . EQ boolex 
+	boolex : boolex . NEQ boolex 
+	boolex : boolex . OR boolex 
+	boolex : boolex OR boolex .  (reduce by rule 68)
+
+	EQ	shift 80
+	NEQ	shift 79
+
+
+	.	reduce by rule 68
+
+
+state 119:
+
+	boolex : boolex . AND boolex 
+	boolex : boolex AND boolex .  (reduce by rule 65)
+	boolex : boolex . EQ boolex 
+	boolex : boolex . NEQ boolex 
+	boolex : boolex . OR boolex 
+
+	EQ	shift 80
+	NEQ	shift 79
+
+
+	.	reduce by rule 65
+
+
+state 120:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+	integerex : integerex GTE integerex .  (reduce by rule 61)
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 61
+
+
+state 121:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex GT integerex .  (reduce by rule 60)
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 60
+
+
+state 122:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex LTE integerex .  (reduce by rule 59)
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 59
+
+
+state 123:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex LT integerex .  (reduce by rule 58)
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 58
+
+
+state 124:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex NEQ integerex .  (reduce by rule 57)
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+
+
+	.	reduce by rule 57
+
+
+state 125:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex EQ integerex .  (reduce by rule 56)
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+
+
+	.	reduce by rule 56
+
+
+state 126:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex MOD integerex .  (reduce by rule 55)
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 55
+
+
+state 127:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex DIV integerex .  (reduce by rule 54)
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 54
+
+
+state 128:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex MUL integerex .  (reduce by rule 53)
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 53
+
+
+state 129:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex SUB integerex .  (reduce by rule 52)
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 52
+
+
+state 130:
+
+	integerex : integerex . ADD integerex 
+	integerex : integerex ADD integerex .  (reduce by rule 51)
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+
+
+	.	reduce by rule 51
+
+
+state 131:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+	rationalex : rationalex GTE rationalex .  (reduce by rule 49)
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 49
+
+
+state 132:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex GT rationalex .  (reduce by rule 48)
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 48
+
+
+state 133:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex LTE rationalex .  (reduce by rule 47)
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 47
+
+
+state 134:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex LT rationalex .  (reduce by rule 46)
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 46
+
+
+state 135:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex NEQ rationalex .  (reduce by rule 45)
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+
+
+	.	reduce by rule 45
+
+
+state 136:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex EQ rationalex .  (reduce by rule 44)
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+
+
+	.	reduce by rule 44
+
+
+state 137:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex DIVRAT rationalex .  (reduce by rule 35)
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 35
+
+
+state 138:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex MULRAT rationalex .  (reduce by rule 34)
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 34
+
+
+state 139:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex SUBRAT rationalex .  (reduce by rule 33)
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 33
+
+
+state 140:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex ADDRAT rationalex .  (reduce by rule 32)
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+
+
+	.	reduce by rule 32
+
+
+state 141:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : TODECIMAL LPAREN rationalex . RPAREN 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+	RPAREN	shift 147
+
+
+	.	error
+
+
+state 142:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : FROMDECIMAL LPAREN rationalex . RPAREN 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+	RPAREN	shift 148
+
+
+	.	error
+
+
+state 143:
+
+	rationalex : rationalex . ADDRAT rationalex 
+	rationalex : rationalex . SUBRAT rationalex 
+	rationalex : rationalex . MULRAT rationalex 
+	rationalex : rationalex . DIVRAT rationalex 
+	rationalex : SHOWDECIMAL LPAREN rationalex . RPAREN 
+	rationalex : rationalex . EQ rationalex 
+	rationalex : rationalex . NEQ rationalex 
+	rationalex : rationalex . LT rationalex 
+	rationalex : rationalex . LTE rationalex 
+	rationalex : rationalex . GT rationalex 
+	rationalex : rationalex . GTE rationalex 
+
+	ADDRAT	shift 105
+	SUBRAT	shift 104
+	MULRAT	shift 103
+	DIVRAT	shift 102
+	EQ	shift 101
+	NEQ	shift 100
+	LT	shift 99
+	LTE	shift 98
+	GT	shift 97
+	GTE	shift 96
+	RPAREN	shift 149
+
+
+	.	error
+
+
+state 144:
+
+	rationalex : RAT LPAREN integerex . RPAREN 
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+	LT	shift 87
+	LTE	shift 86
+	GT	shift 85
+	GTE	shift 84
+	RPAREN	shift 150
+
+
+	.	error
+
+
+state 145:
+
+	rationalex : MAKERAT LPAREN integerex . COMMA integerex RPAREN 
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+	LT	shift 87
+	LTE	shift 86
+	GT	shift 85
+	GTE	shift 84
+	COMMA	shift 151
+
+
+	.	error
+
+
+state 146:
+
+	command : IF expression THEN comseq ELSE . comseq FI 
+
+	LBRACE	shift 18
+
+	comseq	goto 152
+
+	.	error
+
+
+state 147:
+
+	rationalex : TODECIMAL LPAREN rationalex RPAREN .  (reduce by rule 41)
+
+
+
+	.	reduce by rule 41
+
+
+state 148:
+
+	rationalex : FROMDECIMAL LPAREN rationalex RPAREN .  (reduce by rule 40)
+
+
+
+	.	reduce by rule 40
+
+
+state 149:
+
+	rationalex : SHOWDECIMAL LPAREN rationalex RPAREN .  (reduce by rule 39)
+
+
+
+	.	reduce by rule 39
+
+
+state 150:
+
+	rationalex : RAT LPAREN integerex RPAREN .  (reduce by rule 37)
+
+
+
+	.	reduce by rule 37
+
+
+state 151:
+
+	rationalex : MAKERAT LPAREN integerex COMMA . integerex RPAREN 
+
+	NEG	shift 60
+	IDENTIFIER	shift 59
+	POSNUMERAL	shift 58
+
+	integerex	goto 153
+
+	.	error
+
+
+state 152:
+
+	command : IF expression THEN comseq ELSE comseq . FI 
+
+	FI	shift 154
+
+
+	.	error
+
+
+state 153:
+
+	rationalex : MAKERAT LPAREN integerex COMMA integerex . RPAREN 
+	integerex : integerex . ADD integerex 
+	integerex : integerex . SUB integerex 
+	integerex : integerex . MUL integerex 
+	integerex : integerex . DIV integerex 
+	integerex : integerex . MOD integerex 
+	integerex : integerex . EQ integerex 
+	integerex : integerex . NEQ integerex 
+	integerex : integerex . LT integerex 
+	integerex : integerex . LTE integerex 
+	integerex : integerex . GT integerex 
+	integerex : integerex . GTE integerex 
+
+	ADD	shift 94
+	SUB	shift 93
+	MUL	shift 92
+	DIV	shift 91
+	MOD	shift 90
+	EQ	shift 89
+	NEQ	shift 88
+	LT	shift 87
+	LTE	shift 86
+	GT	shift 85
+	GTE	shift 84
+	RPAREN	shift 155
+
+
+	.	error
+
+
+state 154:
+
+	command : IF expression THEN comseq ELSE comseq FI .  (reduce by rule 22)
+
+
+
+	.	reduce by rule 22
+
+
+state 155:
+
+	rationalex : MAKERAT LPAREN integerex COMMA integerex RPAREN .  (reduce by rule 36)
+
+
+
+	.	reduce by rule 36
+
+
+state 156:
+
+
+	EOF	accept
+
+
+	.	error
+
+274 of 700 action table entries left after compaction
+80 goto table entries
