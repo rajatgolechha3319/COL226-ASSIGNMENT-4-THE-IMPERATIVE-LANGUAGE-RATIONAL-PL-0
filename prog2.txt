@@ -1,0 +1,19 @@
+integer x,y,z; boolean a,b,c; rational r1,r2,r3; boolean a; procedure hattori  integer shishimaru; { shishimaru := integer 5;}; procedure hattori2  integer shishimaru2; { shishimaru2 := integer 5;};
+{
+    x := integer 12;
+    y := integer 1;
+    z := integer x + y;
+    a := integer  x < y + z;
+    a := boolean ff;
+    b := boolean tt;
+    c := boolean a && b;
+    r1 := rational rat( x);
+    r2 := rational rat( x + y + z);
+    r3 := rational r1 .+. r2;
+    a := (rational r1) = (integer 12);
+    if ( integer x = 12 ) then { x := integer x + 5;  y := integer y + 7; b := boolean ! b;} else {} fi;
+    z := integer 0;
+    while (integer x > 0 ) do { x := integer x - 1; z := integer z + 2;} od;
+    print(integer x + y + z);
+
+}

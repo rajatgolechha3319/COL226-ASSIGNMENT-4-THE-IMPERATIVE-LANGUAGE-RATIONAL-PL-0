@@ -1,0 +1,14 @@
+integer x,y,z;  
+procedure hattori  integer shishimaru,z;     {z := integer 001; print(integer z); shishimaru := integer 5;}; 
+procedure hattori2  integer shishimaru2,y; {print(integer z); y := integer 200; shishimaru2 := integer 15; call hattori;};
+procedure hattori3  integer shishimaru3; {print(integer z); z := integer 100; shishimaru3 := integer 5; call hattori2;};
+
+{
+    x := integer 12;
+    y := integer 1;
+    z := integer x + y;
+    print(integer x + y + z);
+    call hattori3;
+    print(integer z);
+
+}

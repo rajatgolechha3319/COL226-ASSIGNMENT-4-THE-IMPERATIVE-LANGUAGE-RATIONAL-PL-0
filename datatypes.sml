@@ -104,7 +104,8 @@ fun printDict2 (dict: dict ref) =
 fun find_id (Dict lst, id) = 
   case List.find (fn (x, _) => x = id) lst of
     SOME (_, value) => value
-  | NONE => raise NotFoundTheElement
+  | NONE =>let val _ = print(id) in
+   raise NotFoundTheElement end
 
 fun update_id (Dict lst, name, intboolrat , value) =
   let
@@ -188,7 +189,6 @@ fun dechandle(x: DEC list)=
                         case decl of
                         PDEC(pdefs)=>
                                         let
-                                                val proc_upd = procedupdate(pdefs)
                                         in
                                                 1
                                         end
@@ -313,7 +313,7 @@ fun evalexpression(b)=
                         in
                         if value = "true" andalso value2 = "true" then "true"
                         else if value = "false" andalso value2 = "false" then "true"
-                        else if value = "true" andalso value2 = "true" then "false"
+                        else if value = "true" andalso value2 = "false" then "false"
                         else if value = "false" andalso value2 = "true" then "false"
                         else y(Rational.equal(Rational.fromDecimal(value),Rational.fromDecimal(value2)))
                         end
@@ -368,14 +368,14 @@ fun cmdhandle(x: CMD list)=
                                 let
                                         val blk = get_proceed(!procedlist,a);
                                         val BLK(dec,cmd) = get_proceed(!procedlist,a);
-                                        val newglob = ref (  copyDict (!globaldict) );
-                                        val new_stack = (newglob :: !stack );
-                                        val _ = (stack := new_stack );
-                                        val _ = (globaldict := !(hd( ! stack)) );
+                                        (* val newglob = ref (  copyDict (!globaldict) ); *)
+                                        (* val new_stack = (newglob :: !stack ); *)
+                                        (* val _ = (stack := new_stack ); *)
+                                        (* val _ = (globaldict := !(hd( ! stack)) ); *)
                                         val _ = dechandle(dec);
                                         val _ = cmdhandle(cmd);
-                                        val _ = (stack := tl(!stack));
-                                        val _ = (globaldict := !(hd( ! stack)) );
+                                        (* val _ = (stack := tl(!stack)); *)
+                                        (* val _ = (globaldict := !(hd( ! stack)) ); *)
                                 in
  
                                         cmdhandle(tl(x))
@@ -402,7 +402,7 @@ fun cmdhandle(x: CMD list)=
                         |Print(a)=>
                                 let
                                         val value = evalexpression(a)
-                                        val _ =  (output := value :: !output)
+                                        val _ =  (output :=  !output @ [value])
                                         (* val _ = print(value^"\n") *)
                                 in
                                         cmdhandle(tl(x))
@@ -432,39 +432,55 @@ fun legoblocks(x : BLK)=
                 1
         end; 
 
+
+
+fun extract_nested(x : PDEF list)=
+        if length(x)=0 then 1
+        else 
+                let 
+                        val PDEF(ty,st,blk)= hd(x)
+                        val _ = extract_procs(blk)
+                in
+                        extract_nested(tl(x))
+                end
+
+and extract_procs (BLK (decs, cmds)) =
+        if List.length(decs)=0 then 0
+        else
+        let
+                val decl = hd(decs)
+        in
+                case decl of
+                PDEC(x) => 
+                        let
+                                val _ = (procedupdate(x))
+                                val _ = extract_nested(x)
+                        in 
+                                1
+                        end
+                | _ => extract_procs(BLK(tl(decs),cmds))
+        end
+
+
+fun proceeds(x : AST)=
+        let
+                val PROG block = x;
+                val _ = extract_procs(block);
+        in 
+                1
+        end;
+
 fun letsgo(x : AST)=
         let
                 val PROG block = x;
+                val _ = proceeds(x);
                 val _ = legoblocks (block);
-                val result = procedlist;
+                val result = output;
         in 
                 (* stack *)
                 (* () *)
                 result
         end; 
-
-fun extract_from_blk (BLK cmds) acc =
-    let
-        fun get_procs ([], acc) = acc
-          | get_procs ((PDEF (procedure,_,blk))::rest, acc) =
-            get_procs(rest, (procedure, blk)::acc)
-          | get_procs (_::rest, acc) = get_procs(rest, acc)
-        fun extract_cmds [] acc = acc
-          | extract_cmds ((PDEF _)::rest) acc = extract_cmds rest acc
-          | extract_cmds ((VDEF _)::rest) acc = extract_cmds rest acc
-          | extract_cmds ((Read _)::rest) acc = extract_cmds rest acc
-          | extract_cmds ((Print _)::rest) acc = extract_cmds rest acc
-          | extract_cmds ((Call proc)::rest) acc = extract_cmds rest ((proc, BLK [])::acc)
-        val nested_procs =
-            List.foldr (fn ((_, BLK blk), acc) => extract_from_blk blk acc | _ => acc) [] cmds
-        val proc_list = get_procs (cmds, [])
-        val extracted_cmds = extract_cmds cmds []
-    in
-        proc_list @ nested_procs @ acc @ extracted_cmds
-    end;
-
-
-
 
 
 end;

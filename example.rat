@@ -1,0 +1,70 @@
+(*
+My name is Rajat 
+hello
+guys!!!
+*)
+
+
+rational powerArg1, powerResult;
+integer powerArg2, factorialArg;
+integer factorialResult;
+procedure factorial
+    integer i;
+    integer acc;
+    {
+        i := integer factorialArg;
+        acc := integer 1;
+        while integer i > 0 do
+        {
+            acc := integer acc*i;
+            i := integer i-1;
+        } od;
+        factorialResult := integer acc;
+    };
+
+procedure power
+    integer i;
+    boolean cond;
+    {
+        i := integer 0;
+        powerResult := rational make_rat(1,1);
+        powerResult := rational fromDecimal(1.0(0));
+        cond := integer i<powerArg2;
+        while boolean cond = tt do
+        {
+            powerResult := rational powerResult .*. powerArg1;
+            i := integer i+ 1;
+            cond := integer i<powerArg2;
+        } od;
+    };
+
+procedure boolProc
+    integer n;
+    boolean expectedResult;
+    {
+        read(n);
+        read(expectedResult);
+        if ( ( (integer n % 2 ) = ( integer 0 ) ) = (boolean expectedResult ) ) then {
+            print(integer 1);
+        } else {
+            print(integer 0);
+        } fi;
+    };
+
+{
+    read(factorialArg);
+    call factorial;
+    print ( integer factorialResult );
+
+    read(powerArg1);
+    read(
+        powerArg2
+    );
+    call power;
+    print (rational powerResult);
+
+    call boolProc;
+}
+
+
+

@@ -1,0 +1,29 @@
+integer factorialArg, factorialResult;
+
+procedure factorialRec
+    integer i, acc;
+
+    procedure factorialIter
+        {
+            if (integer i <= factorialArg) then
+            {
+                acc := integer acc*i;
+                i := integer i + 1;
+                call factorialIter;
+            } else {} fi;
+        };
+
+    {
+        i := integer 1;
+        acc := integer 1;
+        call factorialIter;
+        factorialResult := integer acc;
+    };
+
+{
+    read(factorialArg);
+    call factorialRec;
+    print(integer factorialResult);
+}
+
+

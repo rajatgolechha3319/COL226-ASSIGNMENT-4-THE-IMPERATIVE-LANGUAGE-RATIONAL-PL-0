@@ -25,16 +25,28 @@ structure My=
         tree    
     end
 
+fun writeListToFile (filename : string, lst : string list) =
+  let
+    val outStream = TextIO.openOut filename
+    fun writeList (lst : string list) =
+      case lst of
+        [] => ()
+      | x::xs => (TextIO.output (outStream, ( x ^ "\n")); writeList xs)
+  in
+    writeList lst;
+    TextIO.closeOut outStream
+  end
 
 
-    (* fun interpret(filename,fileout)=
+    fun interpret(filename,fileout)=
     let 
     open DataTypes
         val parsed_ast = compile(filename)
-        
+        val stringop = letsgo(parsed_ast)
+        val _ = writeListToFile(fileout,!stringop)        
     in
-        get_prog(parsed_ast)
-    end *)
+        ()
+    end
 
     
 end;
