@@ -132,6 +132,11 @@ Other design decisions are self-explanatory: the AST datatype incorporates refer
 3. RatErrors raised in Rational.sml file.
 ```
 
+# Running the test cases
+```
+Run script.sml, that contains the code for running and checking the test cases and sample outputs given in test_ass4 folder.
+```
+
 # Acknowledgements
 
 1. https://github.com/ChinmayMittal/COL226 ( Github Repository 1)
